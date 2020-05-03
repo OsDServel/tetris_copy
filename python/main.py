@@ -266,12 +266,8 @@ def draw_window(surface):
 	#Draw grid and border
 	draw_grid(surface, 20, 10)
 	pygame.draw.rect(surface, (255, 0, 0), (top_left_x, top_left_y, play_width, play_height), 5)
-	# pygame.display update
+	# pygame.display update   ##NOTE: The text seems to be a line of code the writer left in to check if the code was working so far. It may well come in handy, and therefore i will leave it so that it may be used accordingly. -O.D.S
 
-	"""
-	The above text seems to be a line of code the writer left in to check if the code was working so far.
-	It may well come in handy, and therefore i will leave it so that it may be used accordingly.
-	"""
 
 def main():
 	global grid
@@ -321,8 +317,13 @@ def main():
 					current_piece.x -= 1
 					if not valid_space(current_piece, grid):
 						current_piece.x -= 1
+
+					elif event.key== pygame.K_RIGHT:
+						current_piece.x += 1
+						if not valid_space(current_piece, grid):
+							current_piece.x -= 1
 					elif event.key== pygame.K_UP:
-						# rotate shapw
+						# rotate shape
 						current_piece.rotation= current_piece.rotation + 1 % len(current_piece.shape)
 						if not valid_space(current_piece, grid):
 							current_piece.rotation= current_piece.rotaion- 1 % len(current_piece.shape)
